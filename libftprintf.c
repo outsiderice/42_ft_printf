@@ -6,7 +6,7 @@
 /*   By: amagnell <amagnell@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:03:08 by amagnell          #+#    #+#             */
-/*   Updated: 2023/05/27 18:06:42 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/05/29 20:28:03 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,25 @@ int	ft_printf(const char *input, ...)
 {
 	va_list		args;
 	int			i;
+	int			j;
 
 	i = 0;
+	j = 0;
 	va_start(args, input);
 	va_end(args);
-	while (input[i])
+	while (input[j])
 	{
 		printf("1");
-		if (input[i] == '%')
+		if (input[j] == '%')
 		{
-			i = sort_format(i, &input[i + 1], args);
+			i = sort_format(i, &input[j + 1], args);
+			j += 2;
 		}
 		else
 		{
-			ft_putchar(input[i]);
+			ft_putchar(input[j]);
 			i++;
+			j++;
 		}
 	}
 	return(i);
@@ -91,10 +95,9 @@ int	ft_printf(const char *input, ...)
 int	main(void)
 {
 	printf ("k");
-	ft_printf("%s", "a");
+	printf("%d", ft_printf("%s", "Hello"));
 	return(0);
 }
 
-//Current output = ask1z1
-//Right now it counts and writes the format letter which it shouldn't
+//Now I should deal with d and i
 //When you tell it to print something null it will print (null) literally;
