@@ -6,7 +6,7 @@
 /*   By: amagnell <amagnell@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:03:08 by amagnell          #+#    #+#             */
-/*   Updated: 2023/05/29 20:28:03 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/03 17:47:33 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,48 +18,72 @@
 //and if there's an error it returns -1
 //it doesnt count the %*.
 
-int	ft_putchar(char c)
+int	ft_putchar(int i, char c)
 {
 	if (write(1, &c, 1) != 1)
 		return (-1);
-	return (0);
+	i++;
+	return (i);
 }
 
 int	writer_a(int i, const char *str)
 {
-	while(str[i])
+	int	j;
+
+	j = 0;
+	while(str[j])
 	{
-		ft_putchar(str[i]);
-		i++;
+		i = ft_putchar(i, str[j]);
+		j++;
 	}
 	return(i);
 }
-/*
-int	writer_b(int i, int num)
+
+int	ft_putnbr(int i, int n)
 {
-	write(1, &num, 1);
+	long	m;
+
+	m = n;
+	if (m < 0)
+	{
+		m = m * -1;
+		i = ft_putchar(i, '-');
+	}
+	if (m > 9)
+	{
+		ft_putnbr(i, m / 10);
+		ft_putnbr(i, m % 10);
+	}
+	if (m <= 9)
+	{
+		m = m + '0';
+		i = ft_putchar(i, (char)m);
+	}
 	return(i);
 }
-*/
+
 int	sort_format(int i, const char *format, va_list args)
 {
 	char	*str;
-	if (*format == 'c' || *format == 's')
+
+	if (*format == 's')
 	{
-		printf("z");
+		printf("m");
 		str = va_arg(args, char *);
 		i = writer_a(i, str);
 	}
-            //if the next character is a p
+	else if (*format == 'c')
+		i = ft_putchar(i, va_arg(args, int));
 	/*
-	else if (*format == 'd' || *format == 'i')
+	else if (*format == 'p')
 	{
-		writer_b(i, va_arg(args, int));
-		i++;
 	}
-            //if the next character is a u
-            //if the next character is a x
-            //if the next character is a X
+	*/
+	else if (*format == 'd' || *format == 'i' || *format == 'u')
+		i = ft_putnbr(i, va_arg(args, int));
+	/*
+	else if (*format == 'x' || *format == 'X')
+	{}
 	*/
 	return(i);
 }
@@ -76,7 +100,7 @@ int	ft_printf(const char *input, ...)
 	va_end(args);
 	while (input[j])
 	{
-		printf("1");
+		printf("l");
 		if (input[j] == '%')
 		{
 			i = sort_format(i, &input[j + 1], args);
@@ -84,8 +108,7 @@ int	ft_printf(const char *input, ...)
 		}
 		else
 		{
-			ft_putchar(input[j]);
-			i++;
+			i = ft_putchar(i, input[j]);
 			j++;
 		}
 	}
@@ -95,9 +118,13 @@ int	ft_printf(const char *input, ...)
 int	main(void)
 {
 	printf ("k");
-	printf("%d", ft_printf("%s", "Hello"));
+	printf("%d", ft_printf("%u", 2));
+	printf("\n");
+	printf("%u", -2);
 	return(0);
 }
 
-//Now I should deal with d and i
+//if what's in %u is negative return -1. add some condition like that i guess idk.
+//why does printf actually print things when it's %u and a negative number?
 //When you tell it to print something null it will print (null) literally;
+//?? % alone no compile how in mine ??? unga unga too tired for this bs
