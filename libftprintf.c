@@ -18,12 +18,9 @@
 //and if there's an error it returns -1
 //it doesnt count the %*.
 
-int	ft_putchar(int i, char c)
+int	ft_putchar(char c)
 {
-	if (write(1, &c, 1) != 1)
-		return (-1);
-	i++;
-	return (i);
+	return (write(1, &c, 1);
 }
 
 int	writer_a(int i, const char *str)
@@ -33,13 +30,13 @@ int	writer_a(int i, const char *str)
 	j = 0;
 	while(str[j])
 	{
-		i = ft_putchar(i, str[j]);
+		i = ft_putchar(str[j]);
 		j++;
 	}
 	return(i);
 }
 
-int	ft_putnbr(int i, int n)
+int	ft_putnbr(int n)
 {
 	long	m;
 
@@ -47,7 +44,7 @@ int	ft_putnbr(int i, int n)
 	if (m < 0)
 	{
 		m = m * -1;
-		i = ft_putchar(i, '-');
+		i = ft_putchar('-');
 	}
 	if (m > 9)
 	{
@@ -57,7 +54,7 @@ int	ft_putnbr(int i, int n)
 	if (m <= 9)
 	{
 		m = m + '0';
-		i = ft_putchar(i, (char)m);
+		i = ft_putchar((char)m);
 	}
 	return(i);
 }
@@ -73,7 +70,7 @@ int	sort_format(int i, const char *format, va_list args)
 		i = writer_a(i, str);
 	}
 	else if (*format == 'c')
-		i = ft_putchar(i, va_arg(args, int));
+		i = ft_putchar(va_arg(args, int));
 	/*
 	else if (*format == 'p')
 	{
@@ -108,7 +105,7 @@ int	ft_printf(const char *input, ...)
 		}
 		else
 		{
-			i = ft_putchar(i, input[j]);
+			i = ft_putchar(input[j]);
 			j++;
 		}
 	}
