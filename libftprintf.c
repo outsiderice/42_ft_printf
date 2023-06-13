@@ -23,20 +23,22 @@ int	ft_putchar(char c)
 	return (write(1, &c, 1);
 }
 
-int	writer_a(int i, const char *str)
+int	ft_putstr(const char *str)
 {
+	int	count;
 	int	j;
 
+	count = 0;
 	j = 0;
 	while(str[j])
 	{
-		i = ft_putchar(str[j]);
+		count = count + ft_putchar(str[j]);
 		j++;
 	}
-	return(i);
+	return(count);
 }
 
-int	ft_putnbr(int n)
+int	ft_putnbr(int count, int n)
 {
 	long	m;
 
@@ -44,54 +46,50 @@ int	ft_putnbr(int n)
 	if (m < 0)
 	{
 		m = m * -1;
-		i = ft_putchar('-');
+		count = count + ft_putchar('-');
 	}
 	if (m > 9)
 	{
-		ft_putnbr(i, m / 10);
-		ft_putnbr(i, m % 10);
+		ft_putnbr(count, m / 10);
+		ft_putnbr(count, m % 10);
 	}
 	if (m <= 9)
 	{
 		m = m + '0';
-		i = ft_putchar((char)m);
+		count = count + ft_putchar((char)m);
 	}
-	return(i);
+	return(count);
 }
 
-int	sort_format(int i, const char *format, va_list args)
+int	sort_format(const char *format, va_list args)
 {
-	char	*str;
-
+	int	count;
+	
+	count = 0;
 	if (*format == 's')
-	{
-		printf("m");
-		str = va_arg(args, char *);
-		i = writer_a(i, str);
-	}
+		count = ft_putstr(va_arg(args, char *));
 	else if (*format == 'c')
-		i = ft_putchar(va_arg(args, int));
-	/*
+		count = ft_putchar(va_arg(args, int));
 	else if (*format == 'p')
 	{
+		ft_putptr()
 	}
-	*/
 	else if (*format == 'd' || *format == 'i' || *format == 'u')
-		i = ft_putnbr(i, va_arg(args, int));
+		count = ft_putnbr(count, va_arg(args, int));
 	/*
 	else if (*format == 'x' || *format == 'X')
 	{}
 	*/
-	return(i);
+	return(count);
 }
 
 int	ft_printf(const char *input, ...)
 {
 	va_list		args;
-	int			i;
+	int			count;
 	int			j;
 
-	i = 0;
+	count = 0;
 	j = 0;
 	va_start(args, input);
 	va_end(args);
@@ -100,16 +98,16 @@ int	ft_printf(const char *input, ...)
 		printf("l");
 		if (input[j] == '%')
 		{
-			i = sort_format(i, &input[j + 1], args);
-			j += 2;
+			count = count + sort_format(&input[j + 1], args);
+			j = j + 2;
 		}
 		else
 		{
-			i = ft_putchar(input[j]);
+			count = count + ft_putchar(input[j]);
 			j++;
 		}
 	}
-	return(i);
+	return(count);
 }
 
 int	main(void)
