@@ -66,6 +66,7 @@ int	ft_putptr(void *ptr)
 	int	count;
 	
 	count = ft_putstr("0x");
+	//note to self, try out if this really needs to be protected
 	if (count == -1)
 		return(-1);
 	count = count +
