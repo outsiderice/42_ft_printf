@@ -60,19 +60,30 @@ int	ft_putnbr(int count, int n)
 	}
 	return(count);
 }
+		
+int	ft_putptr(void *ptr)
+{
+	int	count;
+	
+	count = ft_putstr("0x");
+	if (count == -1)
+		return(-1);
+	count = count +
+	return(count);
+}
 
 int	sort_format(const char *format, va_list args)
 {
 	int	count;
 	
 	count = 0;
-	if (*format == 's')
-		count = ft_putstr(va_arg(args, char *));
-	else if (*format == 'c')
+	if (*format == 'c')
 		count = ft_putchar(va_arg(args, int));
+	else if (*format == 's')
+		count = ft_putstr(va_arg(args, char *));
 	else if (*format == 'p')
 	{
-		ft_putptr()
+		ft_putptr(va_arg(args, void *));
 	}
 	else if (*format == 'd' || *format == 'i' || *format == 'u')
 		count = ft_putnbr(count, va_arg(args, int));
@@ -92,7 +103,6 @@ int	ft_printf(const char *input, ...)
 	count = 0;
 	j = 0;
 	va_start(args, input);
-	va_end(args);
 	while (input[j])
 	{
 		printf("l");
@@ -107,6 +117,7 @@ int	ft_printf(const char *input, ...)
 			j++;
 		}
 	}
+	va_end(args);
 	return(count);
 }
 
