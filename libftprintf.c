@@ -23,6 +23,24 @@ int	ft_putchar(char c)
 	return (write(1, &c, 1);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	int				i;
+	char			*a;
+
+	i = 0;
+	a = (char *)s;
+	while (a[i] != '\0')
+	{
+		if (a[i] == (char)c)
+			return (&a[i]);
+		i++;
+	}
+	if ((char)c == '\0')
+		return (&a[i]);
+	return (NULL);
+}		
+		
 int	ft_putstr(const char *str)
 {
 	int	count;
@@ -69,7 +87,7 @@ int	ft_putptr(void *ptr)
 	//note to self, try out if this really needs to be protected
 	if (count == -1)
 		return(-1);
-	count = count +
+	count = count + ft_putnbrhex();
 	return(count);
 }
 		
