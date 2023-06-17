@@ -72,6 +72,12 @@ int	ft_putptr(void *ptr)
 	count = count +
 	return(count);
 }
+		
+		// So I'm gonna need. the base or hex alphabet or whatever you call it, one for lowercase and one for uppercase. p will also use lowercase.
+		//Then once you have that variable with the first 16 digits in hex you do ft_putnbr but with that.
+		//So basically while number passed is bigger than 16 first digits, then u use recursive to make that number into digits which are then able to be printed.
+		//Really just putnbr but base 16.
+		//
 
 int	sort_format(const char *format, va_list args)
 {
