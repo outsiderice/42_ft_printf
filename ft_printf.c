@@ -6,7 +6,7 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 16:44:16 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/18 20:21:28 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/26 21:00:56 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ int	ft_printf(const char *input, ...)
 	return (count);
 }
 
-
-int	main(void)
-{
-	ft_printf("ft printf says %p", (void *)-14523);
-	printf("\n");
-	printf("printf says %p", (void *)-14523);
-	printf("\n");
-	ft_printf("ft printf says %p", "hell");
-	printf("\n");
-	printf("printf says %p", "hell");
-	return (0);
-}
+// int	main(void)
+// {
+// 	int a;
+// 	int b;
+// 	a = ft_printf("'>&bK6S4dV%uzNeH%iA%dp%cx%i%x 9o%u,x __ ", 382237279, 914058350, 1094484544, 1899538252, 1816946126, -512908442, -1125117166);
+// 	printf("\n");
+// 	b = printf("'>&bK6S4dV%uzNeH%iA%dp%cx%i%x 9o%u,x __ ", 382237279, 914058350, 1094484544, 1899538252, 1816946126, -512908442, -1125117166);
+// 	printf("\n");
+// 	printf("my printf returns: %d", a);
+// 	printf("pritnf returns: %d", b);
+// 	return (0);
+// }

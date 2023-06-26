@@ -6,26 +6,28 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 14:07:31 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/18 18:24:30 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/26 20:30:47 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_sort_format(const char *format, va_list args)
+int	ft_sort_format(const char *type, va_list args)
 {
 	int	count;
 
 	count = 0;
-	if (*format == 'c')
+	if (*type == 'c')
 		count = ft_putchar(va_arg(args, int));
-	else if (*format == 's')
+	else if (*type == 's')
 		count = ft_putstr(va_arg(args, char *));
-	else if (*format == 'p')
-		count = ft_putptr(va_arg(args, void *));
-	else if (ft_strchr("diuxX", *format))
-		count = ft_nbrs(va_arg(args, int), format);
-	else if (*format == '%')
+	else if (*type == 'p')
+		count = ft_putptr(va_arg(args, unsigned long));
+	else if (ft_strchr("di", *type))
+		count = ft_nbrs(va_arg(args, int), type);
+	else if (ft_strchr("uxX", *type))
+		count = ft_nbrs(va_arg(args, long), type);
+	else if (*type == '%')
 		count = ft_putchar('%');
 	return (count);
 }

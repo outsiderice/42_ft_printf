@@ -6,7 +6,7 @@
 #    By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:57:33 by amagnell          #+#    #+#              #
-#    Updated: 2023/06/18 18:13:31 by amagnell         ###   ########.fr        #
+#    Updated: 2023/06/26 19:41:00 by amagnell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SOURCES = ft_printf.c\
 		  ft_nbrs.c\
 		  ft_putptr.c\
 		  ft_sort_format.c\
-		  ft_strlen.c
+		  ft_strlen.c\
+		  ft_putunbr.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
