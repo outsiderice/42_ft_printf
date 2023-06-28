@@ -6,14 +6,14 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 16:44:16 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/26 21:00:56 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:32:30 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //printf prints its arguments, and the number of characters of the 
 //resulting string and if there's an error it returns -1
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *input, ...)
 {
@@ -36,6 +36,8 @@ int	ft_printf(const char *input, ...)
 			count = count + ft_putchar(input[j]);
 			j++;
 		}
+		if (count == -1)
+			return (-1);
 	}
 	va_end(args);
 	return (count);
@@ -44,12 +46,12 @@ int	ft_printf(const char *input, ...)
 // int	main(void)
 // {
 // 	int a;
-// 	int b;
-// 	a = ft_printf("'>&bK6S4dV%uzNeH%iA%dp%cx%i%x 9o%u,x __ ", 382237279, 914058350, 1094484544, 1899538252, 1816946126, -512908442, -1125117166);
-// 	printf("\n");
-// 	b = printf("'>&bK6S4dV%uzNeH%iA%dp%cx%i%x 9o%u,x __ ", 382237279, 914058350, 1094484544, 1899538252, 1816946126, -512908442, -1125117166);
-// 	printf("\n");
+// 	// int b;
+// 	a = ft_printf("\001\002\007\v\010\f\r\n");
+// 	// printf("\n");
+// 	// b = printf("\001\002\007\v\010\f\r\n");
+// 	// printf("\n");
 // 	printf("my printf returns: %d", a);
-// 	printf("pritnf returns: %d", b);
+// 	// printf("pritnf returns: %d", b);
 // 	return (0);
 // }

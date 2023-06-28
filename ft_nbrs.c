@@ -6,11 +6,11 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 14:06:41 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/26 20:28:00 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:08:07 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_nbrs(unsigned long nbr, const char *type)
 {
@@ -25,10 +25,16 @@ int	ft_nbrs(unsigned long nbr, const char *type)
 	else
 		base = "0123456789abcdef";
 	if (ft_strchr("puxX", *type))
+	{
 		count = count + ft_putunbr(count, nbr, base, type);
+		if (count == -1)
+			return (-1);
+	}
 	else
+	{
 		count = count + ft_putnbr(count, nbr, base, type);
-	if (count == -1)
-		return (-1);
+		if (count == -1)
+			return (-1);
+	}
 	return (count);
 }

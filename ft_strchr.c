@@ -6,11 +6,11 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 14:07:36 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/18 17:31:22 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:08:10 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*ft_strchr(const char *s, int c)
 {

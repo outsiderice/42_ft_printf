@@ -6,14 +6,14 @@
 #    By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 15:57:33 by amagnell          #+#    #+#              #
-#    Updated: 2023/06/26 19:41:00 by amagnell         ###   ########.fr        #
+#    Updated: 2023/06/28 19:11:13 by amagnell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -MD
-INCLUDE = libftprintf.h
+INCLUDE = ft_printf.h
 SOURCES = ft_printf.c\
 		  ft_putchar.c\
 		  ft_putnbr.c\

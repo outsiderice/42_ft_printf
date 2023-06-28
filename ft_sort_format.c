@@ -6,11 +6,11 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 14:07:31 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/26 20:30:47 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:30:08 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_sort_format(const char *type, va_list args)
 {
@@ -26,7 +26,7 @@ int	ft_sort_format(const char *type, va_list args)
 	else if (ft_strchr("di", *type))
 		count = ft_nbrs(va_arg(args, int), type);
 	else if (ft_strchr("uxX", *type))
-		count = ft_nbrs(va_arg(args, long), type);
+		count = ft_nbrs(va_arg(args, unsigned int), type);
 	else if (*type == '%')
 		count = ft_putchar('%');
 	return (count);

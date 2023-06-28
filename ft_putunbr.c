@@ -6,25 +6,22 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:34:39 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/26 20:33:57 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:15:17 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putunbr(int count, unsigned long long nbr, char *base, const char *type)
 {
-	if (nbr < 0 && ft_strchr("di", *type))
-	{
-		nbr = nbr * -1;
-		count = ft_putchar('-');
-	}
 	if (nbr >= (unsigned long)ft_strlen(base))
 	{
 		count = ft_putnbr(count, nbr / ft_strlen(base), base, type);
+		if (count == -1)
+			return (-1);
 		count = ft_putnbr(count, nbr % ft_strlen(base), base, type);
 	}
 	else if (nbr < (unsigned long)ft_strlen(base))
-		count = count + write(1, &base[nbr], 1);
+		count = count + ft_putchar(base[nbr]);
 	return (count);
 }

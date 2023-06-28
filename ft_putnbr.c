@@ -6,11 +6,11 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 14:07:08 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/26 20:33:40 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/06/28 19:10:09 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr(int count, long long nbr, char *base, const char *type)
 {
@@ -18,13 +18,17 @@ int	ft_putnbr(int count, long long nbr, char *base, const char *type)
 	{
 		nbr = nbr * -1;
 		count = ft_putchar('-');
+		if (count == -1)
+			return (-1);
 	}
 	if (nbr >= ft_strlen(base))
 	{
 		count = ft_putnbr(count, nbr / ft_strlen(base), base, type);
+		if (count == -1)
+			return (-1);
 		count = ft_putnbr(count, nbr % ft_strlen(base), base, type);
 	}
 	else if (nbr < ft_strlen(base))
-		count = count + write(1, &base[nbr], 1);
+		count = count + ft_putchar(base[nbr]);
 	return (count);
 }
