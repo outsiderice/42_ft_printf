@@ -6,7 +6,7 @@
 /*   By: amagnell <amagnell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:12:26 by amagnell          #+#    #+#             */
-/*   Updated: 2023/06/28 19:34:14 by amagnell         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:16:32 by amagnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int		ft_putunbr(int count, unsigned long long nbr, char *base, \
 		const char *type);
 int		ft_putnbr(int count, long long nbr, char *base, const char *type);
 int		ft_putchar(char c);
-int		ft_strlen(char *str);
+size_t	ft_strlen(char *str);
 
 #endif
